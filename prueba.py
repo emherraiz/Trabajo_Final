@@ -1,5 +1,6 @@
 import dask.dataframe as dd
 import pandas as pd
+import numpy as np
 from jinja2 import Template
 
 # Especifica la ruta del archivo CSV
@@ -77,3 +78,48 @@ mismatched_data = merged_data[merged_data['Operating Airline'] != merged_data['P
 print("\nDatos que no coinciden entre 'Operating Airline' y 'Published Airline':\n")
 print(mismatched_data)
 print('\nCon un total de', len(mismatched_data), 'datos que no coinciden')
+
+# Calcular el número medio de pasajeros por compañía en la columna "Operating Airline"
+pasajeros_por_compania = datos_traf.groupby('Operating Airline')['Passenger Count'].mean().compute()
+
+# Imprimir el número medio de pasajeros por compañía
+print("Número medio de pasajeros por compañía:")
+print(pasajeros_por_compania)
+
+# Ordenar el DataFrame por número de pasajeros en orden descendente dentro de cada grupo "GEO Región"
+df_sorted = datos_traf.sort_values('Passenger Count', ascending=False)
+
+# Eliminar los registros duplicados por "GEO Región" y mantener solo aquellos con el mayor número de pasajeros
+df_unique = df_sorted.drop_duplicates(subset='GEO Region', keep='first').compute()
+
+# Imprimir el DataFrame resultante
+print("Registros únicos por 'GEO Región' con mayor número de pasajeros:")
+print(df_unique)
+
+# Guardar los resultados en un archivo CSV
+pasajeros_por_compania.to_csv('ruta_del_archivo_pasajeros_por_compania.csv', header=True, index=False)
+df_unique.to_csv('ruta_del_archivo_regiones_unicas.csv', header=True, index=False)
+
+# Reemplazar 'foofoo' por NaN en todas las columnas
+datos_traf = datos_traf.replace('foofoo', np.nan)
+
+
+# Función para convertir una columna a tipo numérico
+def convertir_a_numerico(columna):
+    return columna.apply(pd.to_numeric, errors='coerce')
+
+# Aplicar la función a cada partición del dataframe
+datos_traf = datos_traf.map_partitions(convertir_a_numerico)
+
+# Calcular la media
+media = datos_traf.mean().compute()
+
+# Calcular la desviación estándar de cada columna
+desviacion_estandar = datos_traf.std().compute()
+
+# Imprimir los resultados obtenidos
+print("Media de cada elemento del conjunto de datos:")
+print(media)
+
+print("\nDesviación estándar de cada elemento del conjunto de datos:")
+print(desviacion_estandar)

@@ -1,0 +1,10 @@
+Activity Period,Operating Airline,Operating Airline IATA Code,Published Airline,Published Airline IATA Code,GEO Summary,GEO Region,Activity Type Code,Price Category Code,Terminal,Boarding Area,Passenger Count,Adjusted Activity Type Code,Adjusted Passenger Count,Year,Month
+201308,United Airlines,UA,United Airlines,UA,Domestic,US,Deplaned,Other,Terminal 3,F,659837,Deplaned,659837,2013,August
+200708,United Airlines - Pre 07/01/2013,UA,United Airlines - Pre 07/01/2013,UA,International,Asia,Deplaned,Other,International,G,86398,Deplaned,86398,2007,August
+201507,United Airlines,UA,United Airlines,UA,International,Europe,Deplaned,Other,International,G,48136,Deplaned,48136,2015,July
+200708,Air Canada ,AC,Air Canada ,AC,International,Canada,Deplaned,Other,Terminal 3,E,39798,Deplaned,39798,2007,August
+201407,United Airlines,UA,United Airlines,UA,International,Mexico,Deplaned,Other,International,G,29206,Deplaned,29206,2014,July
+201507,Emirates ,EK,Emirates ,EK,International,Middle East,Deplaned,Other,International,A,14769,Deplaned,14769,2015,July
+201501,Air New Zealand,NZ,Air New Zealand,NZ,International,Australia / Oceania,Enplaned,Other,International,G,12973,Enplaned,12973,2015,January
+201410,TACA,TA,TACA,TA,International,Central America,Deplaned,Other,International,A,8970,Deplaned,8970,2014,October
+201101,LAN Peru,LP,LAN Peru,LP,International,South America,Deplaned,Other,International,A,3685,Deplaned,3685,2011,January
