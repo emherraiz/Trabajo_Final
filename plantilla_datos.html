@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informe de análisis de datos</title>
+</head>
+<body>
+    <h1>Informe de análisis de datos</h1>
+    <table>
+        <tr>
+            <th>Nombre del campo</th>
+            <th>Tipo de dato</th>
+        </tr>
+        {% for campo, tipo in datos %}
+        <tr>
+            <td>{{ campo }}</td>
+            <td>{{ tipo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
